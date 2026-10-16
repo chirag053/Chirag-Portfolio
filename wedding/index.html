@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d0c0b" />
+  <meta name="description" content="A beautiful wedding invitation for Paras and Yukti." />
+  <title>Paras & Yukti — Wedding Invitation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&display=swap');
+    :root {
+      --bg: #0d0c0b; --panel: #15120f; --panel2: #1d1712; --ink: #f4ead9;
+      --muted: #b8a994; --gold: #c9a66b; --gold-bright: #e5c98f;
+      --line: rgba(201,166,107,.35); --rose: #9b6c60;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg); }
+    body {
+      margin: 0; color: var(--ink); background: var(--bg);
+      font-family: 'Manrope', Arial, sans-serif; font-weight: 300;
+      overflow-x: hidden;
+    }
+    a { color: inherit; }
+    .topbar {
+      position: sticky; top: 0; z-index: 30; display: flex; align-items: center;
+      justify-content: space-between; gap: 12px; padding: 17px clamp(18px, 5vw, 72px);
+      background: rgba(13,12,11,.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,166,107,.16);
+    }
+    .brand { font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); }
+    .nav { display: flex; gap: clamp(12px, 2.4vw, 30px); align-items: center; font: 9px 'Manrope', sans-serif; letter-spacing: .15em; text-transform: uppercase; }
+    .nav a { text-decoration: none; color: #c6b8a5; transition: color .25s; }
+    .nav a:hover { color: var(--gold-bright); }
+
+.gate-small, .gate-hint { transition: opacity .3s ease; }
+.gate-names { margin-top: 13px; font: 300 clamp(42px, 8vw, 76px)/1.05 'Cormorant Garamond', Georgia,serif; letter-spacing: .025em; color: #f5e8d3; }
+    .gate-names i { font-weight: 300; font-size: .55em; color: var(--gold); padding: 0 .1em; }
+    .gate-hint { margin-top: 14px; font: 10px 'Manrope',sans-serif; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+    .gate-hint:after { content: "  ↓  SCROLL TO ENTER"; display: block; margin-top: 17px; font: 8px 'Manrope',sans-serif; letter-spacing: .3em; color: #8e7b64; }
+
+
+.invite-card {
+      position: relative; width: min(100%, 900px); padding: clamp(46px, 8vw, 100px) clamp(20px, 8vw, 90px);
+      border: 1px solid var(--line); background: linear-gradient(135deg, rgba(29,23,18,.82), rgba(13,12,11,.8));
+      box-shadow: 0 25px 90px rgba(0,0,0,.28);
+    }
+    .ornament { color: var(--gold); font-size: 25px; letter-spacing: .3em; margin-bottom: 28px; }
+    .eyebrow, .section-label { text-transform: uppercase; letter-spacing: .32em; color: var(--gold); font: 9px 'Manrope',sans-serif; }
+    h1 { font: 300 clamp(52px, 10vw, 104px)/.85 'Cormorant Garamond', Georgia,serif; letter-spacing: .015em; margin: 30px 0 26px; color: #f5e8d3; }
+    h1 span { display: block; font-size: .4em; font-style: italic; color: var(--gold); margin: 18px 0; }
+    .hero-copy { max-width: 490px; margin: 0 auto; color: var(--muted); font-size: 13px; line-height: 2.1; letter-spacing: .035em; }
+    .hero-date { margin-top: 34px; color: var(--gold-bright); letter-spacing: .22em; font: 9px 'Manrope',sans-serif; text-transform: uppercase; }
+    .pill { display: inline-flex; margin-top: 34px; padding: 15px 25px; border: 1px solid var(--gold); color: var(--gold-bright); text-decoration: none; font: 9px 'Manrope',sans-serif; letter-spacing: .2em; text-transform: uppercase; transition: .3s; }
+    .pill:hover { background: var(--gold); color: #120e09; }
+    section { padding: clamp(48px, 6vw, 76px) 20px; }
+    .section-inner { width: min(100%, 1040px); margin: 0 auto; }
+    h2 { text-align: center; font: 300 clamp(40px, 6vw, 66px)/1 'Cormorant Garamond', Georgia,serif; margin: 22px 0 20px; color: #f3e5ce; }
+    .section-intro { max-width: 580px; text-align: center; line-height: 2; color: var(--muted); font-size: 12px; margin: 0 auto 48px; }
+    .events { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 42px; }
+    .event { border: 1px solid var(--line); background: linear-gradient(155deg, #1b1510, #100e0c); padding: 36px 20px; text-align: center; position: relative; }
+    .event:before { content: ""; position: absolute; top: 0; left: 20%; right: 20%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .event .symbol { font-size: 25px; color: var(--gold); }
+    .event h3 { font: 400 32px 'Cormorant Garamond',Georgia,serif; margin: 20px 0 13px; color: #f0dfc5; }
+    .event p { color: var(--muted); font: 10px/2 'Manrope',sans-serif; letter-spacing: .06em; }
+    .time { display: block; color: var(--gold); margin-top: 15px; font: 10px/1.9 'Manrope',sans-serif; }
+    #venue { background: #11100e; }
+    .details-wrap { max-width: 720px; margin: 42px auto 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 34px 12px; text-align: center; }
+    .details-wrap p { line-height: 2.1; color: var(--muted); font-size: 12px; }
+    .details-wrap strong { color: var(--gold-bright); font-weight: 500; }
+    .detail-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .detail-actions a, .detail-actions button {
+      font: 9px 'Manrope',sans-serif; letter-spacing: .15em; text-transform: uppercase; text-decoration: none; cursor: pointer;
+      padding: 14px 20px; border: 1px solid var(--gold); background: transparent; color: var(--gold-bright); transition: .25s;
+    }
+    .detail-actions a:hover, .detail-actions button:hover { background: var(--gold); color: #120e09; }
+    .rsvp { background: radial-gradient(ellipse at 50% 0%, rgba(130,88,43,.13), transparent 65%), #0d0c0b; text-align: center; }
+    .rsvp p { max-width: 540px; margin: 0 auto; color: var(--muted); line-height: 2; font-size: 12px; }
+    .footer { padding: 42px 18px 52px; text-align: center; color: #8f806d; font: 8px/2 'Manrope',sans-serif; letter-spacing: .2em; border-top: 1px solid rgba(201,166,107,.15); }
+    .footer .names { color: var(--gold); font: 36px 'Cormorant Garamond',Georgia,serif; letter-spacing: .03em; margin-bottom: 12px; }
+    .flourish { color: var(--gold); text-align: center; font-size: 18px; margin: 28px 0 0; }
+    .reveal-on-scroll { opacity: 0; transform: translateY(38px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+    .reveal-on-scroll.revealed { opacity: 1; transform: translateY(0); }
+    #story.revealed { opacity: 1; transform: none; }
+    .event.reveal-on-scroll:nth-child(2) { transition-delay: .12s; }
+    .event.reveal-on-scroll:nth-child(3) { transition-delay: .24s; }
+    @media (max-width: 680px) {
+      .topbar { padding: 15px 13px; }
+      .brand { font-size: 8px; letter-spacing: .16em; }
+      .nav { gap: 10px; font-size: 8px; letter-spacing: .08em; }
+      .nav a:nth-child(3) { display: none; }
+.gate-names { font-size: clamp(38px, 9vw, 58px); }
+      .gate-small { font-size: 8px; letter-spacing: .2em; }
+.hero { min-height: 82vh; padding: 50px 18px; }
+      .events { grid-template-columns: 1fr; gap: 13px; }
+      .event { padding: 30px 18px; }
+      section { padding: 46px 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+.reveal-on-scroll { opacity: 1; transform: none; transition: none; }
+    }
+
+
+    .hero {
+      min-height: 100svh; display: flex; align-items: center; justify-content: center;
+      padding: 12px 18px; text-align: center; position: relative;
+      background: radial-gradient(ellipse at 50% 38%, rgba(130,88,43,.12), transparent 58%), #0d0c0b;
+    }
+    .invite-card {
+      width: min(100%, 900px); padding: 8px 18px; border: 0; background: transparent;
+      box-shadow: none; position: relative;
+    }
+    .eyebrow {
+      text-transform: uppercase; letter-spacing: .28em; color: #b8a994;
+      font: 10px 'Manrope', Arial, sans-serif; margin-bottom: 14px;
+    }
+    h1 {
+      font: 300 clamp(50px, 9vw, 88px)/.95 'Cormorant Garamond', Georgia, serif;
+      letter-spacing: .015em; margin: 0 0 12px; color: #f4ead9;
+    }
+    h1 span {
+      display: inline; font-size: .62em; font-style: italic; color: #c9a66b;
+      margin: 0 .12em; vertical-align: .08em;
+    }
+    .hero-copy {
+      max-width: none; margin: 0 auto; color: #c9a66b; font-size: 12px;
+      line-height: 1.6; letter-spacing: .22em; text-transform: uppercase;
+    }
+    .pill {
+      display: inline-flex; margin-top: 16px; padding: 0; border: 0; color: #8e7b64;
+      font: 10px 'Manrope', Arial, sans-serif; letter-spacing: .25em; text-transform: uppercase;
+      text-decoration: none; background: transparent;
+    }
+    .pill:hover { color: #f4ead9; background: transparent; }
+
+
+    /* Subtle luxury motion */
+    @keyframes warmGlow {
+      0%, 100% { opacity: .45; transform: scale(1); }
+      50% { opacity: .8; transform: scale(1.06); }
+    }
+    @keyframes titleRise {
+      from { opacity: 0; transform: translateY(18px); filter: blur(5px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+    @keyframes goldShimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes promptFloat {
+      0%, 100% { transform: translateY(0); opacity: .62; }
+      50% { transform: translateY(5px); opacity: 1; }
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 50% 48%, rgba(201,166,107,.12), transparent 48%);
+      animation: warmGlow 7s ease-in-out infinite;
+    }
+    .invite-card { z-index: 1; }
+    .eyebrow { animation: titleRise 1s .12s both; }
+    .hero h1 { animation: titleRise 1.15s .35s both; }
+    .hero-copy { animation: titleRise 1s .62s both; }
+    .hero .pill { animation: titleRise 1s .82s both, promptFloat 2.4s 1.8s ease-in-out infinite; }
+    h1 span {
+      background: linear-gradient(110deg, #9f7b42 10%, #f0d99b 35%, #c9a66b 55%, #f0d99b 70%, #9f7b42 90%);
+      background-size: 220% auto; -webkit-background-clip: text; background-clip: text;
+      color: transparent; animation: goldShimmer 6s linear infinite;
+    }
+    .event, .details-wrap, .rsvp .section-inner {
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+    .event:hover {
+      transform: translateY(-6px); border-color: rgba(229,201,143,.75);
+      box-shadow: 0 16px 42px rgba(0,0,0,.24);
+    }
+    .pill, .detail-actions a, .detail-actions button { transition: color .3s ease, background .3s ease, letter-spacing .3s ease; }
+    .pill:hover { letter-spacing: .32em; }
+    .reveal-on-scroll { transition: opacity .85s ease, transform .85s cubic-bezier(.2,.7,.2,1), filter .85s ease; filter: blur(3px); }
+    .reveal-on-scroll.revealed { filter: blur(0); }
+    .event:nth-child(1) { transition-delay: .05s; }
+    .event:nth-child(2) { transition-delay: .18s; }
+    .event:nth-child(3) { transition-delay: .31s; }
+    .flourish { animation: warmGlow 5s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+      .reveal-on-scroll { filter: none; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">The Wedding Invitation</div>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#story">Invitation</a>
+      <a href="#events">Events</a>
+      <a href="#venue">Venue</a>
+      <a href="#rsvp">RSVP</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero revealed" id="story">
+      <div class="invite-card">
+        <div class="eyebrow">You are cordially invited to</div>
+        <h1>Paras <span>&amp;</span> Yukti</h1>
+        <p class="hero-copy">A celebration of love</p>
+        <a class="pill" href="#events">↓ Scroll to enter</a>
+      </div>
+    </section>
+
+    <section id="events" class="reveal-on-scroll">
+      <div class="section-inner">
+        <div class="section-label">Save the celebration</div>
+        <h2>Wedding Celebrations</h2>
+        <p class="section-intro">Your presence and blessings will make these special moments even more memorable.</p>
+        <div class="events">
+          <article class="event reveal-on-scroll">
+            <div class="symbol" aria-hidden="true">✧</div>
+            <h3>Engagement</h3>
+            <p>Tuesday, 12 May 2026</p>
+            <span class="time">Time & venue to be added</span>
+          </article>
+          <article class="event reveal-on-scroll">
+            <div class="symbol" aria-hidden="true">❀</div>
+            <h3>Haldi</h3>
+            <p>Wednesday, 13 May 2026</p>
+            <span class="time">Morning · Venue to be added</span>
+          </article>
+          <article class="event reveal-on-scroll">
+            <div class="symbol" aria-hidden="true">♕</div>
+            <h3>Wedding</h3>
+            <p>Wednesday, 13 May 2026</p>
+            <span class="time">Sherabandi · 6:00 PM<br />Departure of Barat · 7:00 PM</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="venue" class="reveal-on-scroll">
+      <div class="section-inner">
+        <div class="section-label">Join us</div>
+        <h2>Venue & Details</h2>
+        <div class="details-wrap">
+          <p><strong>Wedding Venue</strong><br />Venue details will be shared soon.</p>
+          <p><strong>With love,</strong><br />Paras &amp; Yukti and our families</p>
+          <div class="detail-actions">
+            <a href="#rsvp">RSVP / Contact</a>
+            <button type="button" id="calendarBtn">Add wedding to calendar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rsvp reveal-on-scroll" id="rsvp">
+      <div class="section-inner">
+        <div class="section-label">We would love to see you</div>
+        <h2>Be Our Guest</h2>
+        <p>Please join us in celebrating love, laughter, and a lifetime of togetherness. For RSVP or venue details, please contact the family.</p>
+        <div class="detail-actions">
+          <a href="https://wa.me/" target="_blank" rel="noopener">Contact on WhatsApp</a>
+          <button type="button" id="shareBtn">Share Invitation</button>
+        </div>
+        <p style="font-size:12px; margin-top:18px;">Before publishing, add your WhatsApp number and venue details to this page.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="names">Paras &amp; Yukti</div>
+    MADE WITH LOVE · WEDDING INVITATION
+  </footer>
+
+  <script>
+
+    // Sections and event cards reveal gently as the guest scrolls down.
+    const revealItems = document.querySelectorAll('.reveal-on-scroll');
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -35px 0px' });
+      revealItems.forEach(item => revealObserver.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('revealed'));
+    }
+
+    const calendarBtn = document.getElementById('calendarBtn');
+    calendarBtn.addEventListener('click', () => {
+      const event = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Paras and Yukti//Wedding Invitation//EN',
+        'BEGIN:VEVENT',
+        'UID:paras-yukti-wedding-20260513@example.com',
+        'DTSTAMP:20261016T000000Z',
+        'DTSTART:20260513T123000Z',
+        'DTEND:20260513T160000Z',
+        'SUMMARY:Wedding of Paras and Yukti',
+        'DESCRIPTION:Sherabandi at 6:00 PM; Departure of Barat at 7:00 PM. Please confirm venue details with the family.',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\\r\\n');
+      const blob = new Blob([event], {type: 'text/calendar;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'Paras-Yukti-Wedding.ics'; a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('shareBtn').addEventListener('click', async () => {
+      const shareData = { title: 'Paras & Yukti — Wedding Invitation', text: 'You are invited to celebrate the wedding of Paras & Yukti!' , url: window.location.href };
+      try {
+        if (navigator.share) await navigator.share(shareData);
+        else if (navigator.clipboard) {
+          await navigator.clipboard.writeText(window.location.href);
+          alert('Invitation link copied. You can now share it with your guests.');
+        } else {
+          alert('Copy the website link from your browser address bar to share the invitation.');
+        }
+      } catch (e) {}
+    });
+  </script>
+</body>
+</html>
