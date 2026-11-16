@@ -218,6 +218,47 @@ html, body, button, input, textarea, select, a, p, span, small, strong, b, h1, h
 @media(prefers-reduced-motion:reduce){.banner-copy{opacity:1!important;transform:translateX(-50%)!important}}
 </style>
 
+
+<style id="natural-flower-breeze">
+.wedding-banner-wrap{isolation:isolate}
+.flower-sway-layer{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  pointer-events:none;z-index:2;display:block;transform-origin:50% 0;
+  will-change:transform;user-select:none;
+}
+.flower-sway-top{clip-path:polygon(0 0,100% 0,100% 27%,0 27%);animation:topGarlandBreeze 8.7s ease-in-out infinite alternate}
+.flower-sway-left{clip-path:polygon(0 0,18% 0,18% 55%,0 55%);transform-origin:0 0;animation:sideGarlandBreeze 7.3s ease-in-out infinite alternate}
+.flower-sway-right{clip-path:polygon(82% 0,100% 0,100% 55%,82% 55%);transform-origin:100% 0;animation:sideGarlandBreeze 9.1s ease-in-out infinite alternate-reverse}
+@keyframes topGarlandBreeze{
+  0%{transform:translateX(-.12%) rotate(-.18deg)}
+  35%{transform:translateX(.12%) rotate(.22deg)}
+  68%{transform:translateX(-.06%) rotate(-.12deg)}
+  100%{transform:translateX(.08%) rotate(.16deg)}
+}
+@keyframes sideGarlandBreeze{
+  0%{transform:rotate(-.28deg) translateX(-.08%)}
+  45%{transform:rotate(.22deg) translateX(.10%)}
+  100%{transform:rotate(-.12deg) translateX(-.04%)}
+}
+.flower-petal{
+  position:absolute;z-index:3;top:var(--petal-top);left:var(--petal-left);
+  width:var(--petal-size);height:calc(var(--petal-size)*.68);
+  border-radius:90% 10% 90% 10%;background:var(--petal-color);
+  opacity:0;pointer-events:none;filter:drop-shadow(0 1px 2px #0002);
+  animation:petalDrift var(--petal-duration) ease-in-out var(--petal-delay) infinite;
+}
+@keyframes petalDrift{
+  0%{opacity:0;transform:translate3d(0,-5px,0) rotate(0deg)}
+  12%{opacity:.72}
+  55%{opacity:.58;transform:translate3d(var(--petal-drift),45px,0) rotate(115deg)}
+  88%{opacity:.32}
+  100%{opacity:0;transform:translate3d(calc(var(--petal-drift)*1.35),95px,0) rotate(245deg)}
+}
+@media(prefers-reduced-motion:reduce){
+ .flower-sway-layer,.flower-petal{animation:none!important}
+}
+</style>
+
 </head><body>
 <nav><div class="container navin"><a class="brand" href="#home">P<span>&</span>Y.<small style="display:block;font-size:8px;letter-spacing:.28em;font-weight:500;color:#9b6b59;margin-top:-2px">WEDDING CELEBRATION</small></a><button class="toggle" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button><div class="links"><a href="#home">Home</a><a href="#story">Our Invitation</a><a href="#events">Celebrations</a><a href="#venue">Venue</a></div><a class="cta" href="#venue">Join the Celebration</a></div></nav>
 <header class="hero wedding-banner-hero" id="home">
@@ -386,6 +427,49 @@ window.addEventListener('load',()=>{
     gsap.to('.banner-names',{y:0,opacity:1,duration:1.15,delay:.18,ease:'power3.out',scrollTrigger:{trigger:'.wedding-banner-wrap',start:'top 72%',once:true}});
     gsap.to('.banner-date',{y:0,opacity:1,duration:1,delay:.35,ease:'power3.out',scrollTrigger:{trigger:'.wedding-banner-wrap',start:'top 66%',once:true}});
   } else { document.querySelectorAll('.banner-copy').forEach(el=>{el.style.opacity='1';}); }
+});
+</script>
+
+
+<script id="flower-breeze-motion">
+window.addEventListener('load',()=>{
+  const wrap=document.querySelector('.wedding-banner-wrap');
+  const base=wrap?.querySelector('.wedding-banner-image');
+  if(!wrap||!base||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+
+  // Cropped copies isolate the top floral canopy and the two hanging side garlands.
+  // The original image remains underneath, so the mandap and couple do not move.
+  [
+    ['flower-sway-top','top'],
+    ['flower-sway-left','left'],
+    ['flower-sway-right','right']
+  ].forEach(([className,label])=>{
+    const layer=base.cloneNode(true);
+    layer.removeAttribute('id');
+    layer.removeAttribute('fetchpriority');
+    layer.alt='';
+    layer.setAttribute('aria-hidden','true');
+    layer.className='flower-sway-layer '+className;
+    layer.style.animationDelay=(-Math.random()*4.5)+'s';
+    layer.style.animationDuration=(7+Math.random()*3.8)+'s';
+    wrap.appendChild(layer);
+  });
+
+  // A few tiny loose petals drift gently through the floral canopy.
+  const colors=['#f3a2b9','#fff0e7','#d94f77','#e9c6a0'];
+  for(let i=0;i<9;i++){
+    const petal=document.createElement('i');
+    petal.className='flower-petal';
+    petal.setAttribute('aria-hidden','true');
+    petal.style.setProperty('--petal-top',(8+Math.random()*19)+'%');
+    petal.style.setProperty('--petal-left',(5+Math.random()*90)+'%');
+    petal.style.setProperty('--petal-size',(5+Math.random()*5)+'px');
+    petal.style.setProperty('--petal-color',colors[Math.floor(Math.random()*colors.length)]);
+    petal.style.setProperty('--petal-duration',(7+Math.random()*7)+'s');
+    petal.style.setProperty('--petal-delay',(-Math.random()*12)+'s');
+    petal.style.setProperty('--petal-drift',(-24+Math.random()*48)+'px');
+    wrap.appendChild(petal);
+  }
 });
 </script>
 
