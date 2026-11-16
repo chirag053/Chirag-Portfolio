@@ -194,10 +194,65 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#777;font-size:13px
   html{scroll-behavior:auto}
   *,*:before,*:after{animation:none!important;transition:none!important}
 }
+
+
+/* Subtle hero-banner accents: decorative, low contrast, kept in open space */
+.hero{isolation:isolate}
+.hero-grid{position:relative;z-index:1}
+.hero-ambient{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;opacity:.48}
+.hero-timeline{position:absolute;top:13%;left:52%;width:138px;height:20px;display:flex;align-items:center;gap:5px;transform:rotate(-5deg);opacity:.42}
+.hero-timeline:before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(21,155,222,.65),rgba(99,35,127,.55),transparent)}
+.hero-timeline i{width:3px;height:8px;border-radius:2px;background:rgba(21,155,222,.72);z-index:1;animation:bannerTick 2.8s ease-in-out infinite alternate}
+.hero-timeline i:nth-child(2){height:13px;animation-delay:.4s}.hero-timeline i:nth-child(3){height:6px;animation-delay:.8s}.hero-timeline i:nth-child(4){height:11px;animation-delay:1.2s}.hero-timeline i:nth-child(5){height:7px;animation-delay:1.6s}
+.hero-timeline b{width:5px;height:5px;border-radius:50%;background:#159BDE;box-shadow:0 0 10px rgba(21,155,222,.5);z-index:1}
+.hero-design-mark{position:absolute;right:4.5%;top:37%;width:34px;height:34px;border:1px solid rgba(99,35,127,.28);transform:rotate(45deg);border-radius:7px;animation:bannerDrift 9s ease-in-out infinite}
+.hero-design-mark:before,.hero-design-mark:after{content:"";position:absolute;background:rgba(21,155,222,.38)}
+.hero-design-mark:before{width:1px;height:48px;left:16px;top:-8px}.hero-design-mark:after{height:1px;width:48px;top:16px;left:-8px}
+.hero-glint{position:absolute;left:7%;top:39%;width:5px;height:5px;border-radius:50%;background:rgba(21,155,222,.7);box-shadow:0 0 14px 3px rgba(21,155,222,.12);animation:glintFade 4s ease-in-out infinite}
+@keyframes bannerTick{from{opacity:.35;transform:scaleY(.65)}to{opacity:.85;transform:scaleY(1)}}
+@keyframes bannerDrift{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -9px;rotate:18deg}}
+@keyframes glintFade{0%,100%{opacity:.25}50%{opacity:.8}}
+@media(max-width:900px){.hero-timeline{left:auto;right:18%;top:7%;scale:.8}.hero-design-mark{right:7%;top:52%;scale:.75}.hero-glint{left:8%;top:28%}}
+@media(max-width:700px){.hero-ambient{opacity:.32}.hero-timeline{top:4%;right:7%;scale:.65}.hero-design-mark{right:4%;top:56%;scale:.58}.hero-glint{left:5%;top:24%}}
+@media(prefers-reduced-motion:reduce){.hero-timeline i,.hero-design-mark,.hero-glint{animation:none!important}}
+
+/* Ambient creative graphics — decorative only, never interactive */
+.ambient-graphics{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;opacity:.72}
+.ambient-graphics .float{position:absolute;display:block;will-change:transform;}
+.ambient-graphics .orbit{width:92px;height:92px;border:1px solid rgba(21,155,222,.23);border-radius:50%;left:3.5%;top:22%;animation:orbitDrift 13s ease-in-out infinite}
+.ambient-graphics .orbit:before,.ambient-graphics .orbit:after{content:"";position:absolute;border:1px solid rgba(99,35,127,.25);border-radius:50%;inset:13px}
+.ambient-graphics .orbit:after{inset:29px;border-color:rgba(21,155,222,.3)}
+.ambient-graphics .play-outline{right:5%;top:17%;width:54px;height:38px;border:1px solid rgba(99,35,127,.42);border-radius:9px;transform:rotate(-12deg);animation:softFloat 8s ease-in-out infinite}
+.ambient-graphics .play-outline:after{content:"";position:absolute;left:22px;top:10px;border-left:12px solid rgba(21,155,222,.65);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.ambient-graphics .wave{left:5%;top:67%;width:100px;height:30px;display:flex;align-items:center;gap:4px;transform:rotate(-8deg);animation:softFloat 9s ease-in-out infinite reverse}
+.ambient-graphics .wave i{width:3px;border-radius:5px;background:linear-gradient(180deg,rgba(21,155,222,.65),rgba(99,35,127,.65));height:var(--h);animation:wavePulse 1.4s ease-in-out infinite alternate}
+.ambient-graphics .wave i:nth-child(2n){animation-delay:.3s}.ambient-graphics .wave i:nth-child(3n){animation-delay:.6s}
+.ambient-graphics .crop{right:7%;top:57%;width:54px;height:54px;opacity:.45;animation:softFloat 11s ease-in-out infinite}
+.ambient-graphics .crop:before,.ambient-graphics .crop:after{content:"";position:absolute;width:18px;height:18px;border-color:#159BDE;border-style:solid}
+.ambient-graphics .crop:before{top:0;left:0;border-width:1px 0 0 1px;box-shadow:35px 0 0 -1px transparent}
+.ambient-graphics .crop:after{bottom:0;right:0;border-width:0 1px 1px 0}
+.ambient-graphics .spark{left:48%;top:13%;width:13px;height:13px;opacity:.55;animation:sparkTurn 12s linear infinite}
+.ambient-graphics .spark:before,.ambient-graphics .spark:after{content:"";position:absolute;background:linear-gradient(180deg,#159BDE,#63237F);border-radius:3px}
+.ambient-graphics .spark:before{width:2px;height:13px;left:5px}.ambient-graphics .spark:after{height:2px;width:13px;top:5px}
+body>header,body>main,body>footer{position:relative;z-index:1}
+@keyframes orbitDrift{0%,100%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(12px,-18px,0) rotate(25deg)}}
+@keyframes softFloat{0%,100%{translate:0 0}50%{translate:0 -13px}}
+@keyframes wavePulse{from{scale:1 .45;opacity:.45}to{scale:1 1;opacity:.9}}
+@keyframes sparkTurn{to{transform:rotate(360deg)}}
+@media(max-width:700px){.ambient-graphics{opacity:.42}.ambient-graphics .orbit{width:58px;height:58px;left:-18px;top:27%}.ambient-graphics .play-outline{right:2%;top:12%;scale:.72}.ambient-graphics .wave{left:-22px;top:73%;scale:.75}.ambient-graphics .crop{right:1%;top:60%;scale:.7}.ambient-graphics .spark{left:82%;top:37%}}
+@media(prefers-reduced-motion:reduce){.ambient-graphics .float,.ambient-graphics .wave i{animation:none!important}}
+
 </style>
 </head>
 
 <body>
+<div class="ambient-graphics" aria-hidden="true">
+  <span class="float orbit"></span>
+  <span class="float play-outline"></span>
+  <span class="float wave"><i style="--h:7px"></i><i style="--h:15px"></i><i style="--h:10px"></i><i style="--h:22px"></i><i style="--h:13px"></i><i style="--h:19px"></i><i style="--h:8px"></i><i style="--h:24px"></i><i style="--h:12px"></i><i style="--h:17px"></i><i style="--h:9px"></i><i style="--h:20px"></i></span>
+  <span class="float crop"></span>
+  <span class="float spark"></span>
+</div>
 <header id="header">
   <div class="container nav">
     <a class="logo" href="#home" aria-label="Chirag Hasija home"><img src="chirag-logo.png" alt="Chirag Hasija Creations logo"></a>
@@ -214,6 +269,11 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#777;font-size:13px
 
 <main>
 <section class="hero" id="home">
+  <div class="hero-ambient" aria-hidden="true">
+    <span class="hero-timeline"><i></i><i></i><i></i><i></i><i></i><b></b></span>
+    <span class="hero-design-mark"></span>
+    <span class="hero-glint"></span>
+  </div>
   <div class="container hero-grid">
     <div class="hero-copy reveal">
       <div class="hero-kicker">Video Editor · Graphic Designer · Freelance</div>
