@@ -1538,12 +1538,21 @@ document.addEventListener('DOMContentLoaded',function(){
  });
  audio.addEventListener('play',()=>paint(true));
  audio.addEventListener('pause',()=>paint(false));
- // Browsers may block sound autoplay until the visitor interacts with the page.
+ // Try audible autoplay as soon as the page is ready.
  startMusic();
- document.addEventListener('pointerdown',function unlockOnce(){
-  if(audio.paused)startMusic();
-  if(!audio.paused)document.removeEventListener('pointerdown',unlockOnce);
- },{passive:true});
+ // If the browser blocks autoplay, retry on the visitor's first interaction.
+ const unlockMusic=async function(){
+  if(audio.paused)await startMusic();
+  if(!audio.paused){
+   document.removeEventListener('pointerdown',unlockMusic);
+   document.removeEventListener('touchstart',unlockMusic);
+   document.removeEventListener('keydown',unlockMusic);
+  }
+ };
+ document.addEventListener('pointerdown',unlockMusic,{passive:true});
+ document.addEventListener('touchstart',unlockMusic,{passive:true});
+ document.addEventListener('keydown',unlockMusic);
+ window.addEventListener('pageshow',function(){if(audio.paused)startMusic();});
 });
 </script>
 
