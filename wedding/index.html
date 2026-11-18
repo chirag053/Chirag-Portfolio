@@ -933,11 +933,11 @@ section{scroll-margin-top:78px}
  will-change:transform,opacity;
 }
 @keyframes galleryHeartFloat{
- 0%{transform:translate3d(0,0,0) rotate(-12deg) scale(.8);opacity:0}
- 8%{opacity:.78}
- 55%{transform:translate3d(var(--heart-drift),-48vh,0) rotate(10deg) scale(1)}
- 88%{opacity:.52}
- 100%{transform:translate3d(calc(var(--heart-drift) * -0.45),-105vh,0) rotate(-8deg) scale(.8);opacity:0}
+ 0%{transform:translate3d(0,0,0) rotate(-7deg) scale(.8);opacity:0}
+ 8%{opacity:.22}
+ 55%{transform:translate3d(var(--heart-drift),-48vh,0) rotate(2deg) scale(.92)}
+ 88%{opacity:.12}
+ 100%{transform:translate3d(calc(var(--heart-drift) * -0.2),-105vh,0) rotate(-2deg) scale(.8);opacity:0}
 }
 @media(prefers-reduced-motion:reduce){.gallery-floating-heart{animation:none!important;display:none}}
 </style>
@@ -1459,9 +1459,9 @@ document.addEventListener('DOMContentLoaded',function(){
   heart.style.setProperty('--heart-left',(2+Math.random()*96)+'%');
   heart.style.setProperty('--heart-size',(13+Math.random()*13)+'px');
   heart.style.setProperty('--heart-color',colors[i%colors.length]);
-  heart.style.setProperty('--heart-duration',(10+Math.random()*9)+'s');
-  heart.style.setProperty('--heart-delay',(-Math.random()*18)+'s');
-  heart.style.setProperty('--heart-drift',(-22+Math.random()*44)+'px');
+  heart.style.setProperty('--heart-duration',(120+Math.random()*90)+'s');
+  heart.style.setProperty('--heart-delay',(-Math.random()*180)+'s');
+  heart.style.setProperty('--heart-drift',(-5+Math.random()*10)+'px');
   layer.appendChild(heart);
  }
  section.prepend(layer);
