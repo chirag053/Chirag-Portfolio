@@ -730,6 +730,107 @@ footer{font-family:var(--font-display)!important;letter-spacing:.08em!important}
 }
 </style>
 
+
+<style id="complete-mobile-friendly-wedding-layout">
+/* Mobile-first refinements */
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{overflow-x:hidden}
+img,svg,video{max-width:100%}
+.container{width:min(1120px,calc(100% - 48px));margin-inline:auto}
+.lux-nav{position:sticky;top:0;z-index:1000}
+.lux-nav .navin{display:flex;align-items:center;justify-content:space-between;min-height:70px}
+.wedding-banner-wrap{width:100%;overflow:hidden}
+.wedding-banner-image{width:100%;height:auto;display:block}
+
+/* Event cards stay even on desktop and become full-width cards on phones. */
+.festivities-list{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important}
+.festivities-list .day-card{min-width:0;width:100%;height:100%;box-sizing:border-box}
+.festivities-list .featured-day{grid-column:auto!important}
+.festivities-list .function-row{min-width:0}
+.festivities-list .function-info{min-width:0;overflow-wrap:anywhere}
+.festivities-list .function-info h3{font-size:clamp(20px,2.2vw,27px);line-height:1.2}
+.festivities-list .function-info p{font-size:14px;line-height:1.55}
+.venue-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.venue-item{min-width:0;display:flex;align-items:center;gap:12px}
+.venue-item span:nth-child(2){min-width:0;overflow-wrap:anywhere}
+.countdown-panel{padding:clamp(18px,3vw,30px)}
+.countdown-panel .units{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.countdown-panel .unit{min-width:0;text-align:center;padding:12px 8px}
+.head{text-align:center}
+section{scroll-margin-top:78px}
+
+/* Tablet */
+@media(max-width:900px){
+ .container{width:calc(100% - 36px)}
+ .lux-nav .navin{min-height:68px}
+ .lux-nav .links{gap:18px}
+ .festivities-list{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .venue-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .wedding-banner-image{height:auto!important;aspect-ratio:auto!important;object-fit:contain!important}
+}
+
+/* Phone */
+@media(max-width:680px){
+ html{scroll-padding-top:64px}
+ .container{width:calc(100% - 30px)}
+ nav.lux-nav{height:64px!important;position:sticky;top:0}
+ .lux-nav .navin{height:64px!important;min-height:64px!important;width:calc(100% - 24px)!important;gap:8px}
+ .lux-brand{min-width:0!important;gap:7px!important;font-size:10px!important;letter-spacing:.09em!important;white-space:nowrap}
+ .lux-logo{width:39px!important;height:39px!important;flex:0 0 39px}
+ .lux-nav .toggle{display:block!important;flex:0 0 auto;font-size:19px!important;padding:5px 9px!important}
+ .lux-nav .links{display:none!important;position:absolute!important;top:64px!important;left:0!important;right:0!important;z-index:1001!important;padding:12px 22px 18px!important;background:#240914!important;border-bottom:1px solid #d1a65d88!important;box-shadow:0 16px 24px #0008!important;flex-direction:column!important;align-items:stretch!important;gap:0!important}
+ .lux-nav .links.open{display:flex!important}
+ .lux-nav .links a{display:block!important;width:100%!important;padding:13px 0!important;font-size:12px!important}
+ .lux-hashtag{width:78px!important;height:42px!important;flex:0 0 78px!important;border:0!important;padding:0!important}
+ .lux-hashtag img{width:76px!important;max-height:40px!important;object-fit:contain}
+ .hero.wedding-banner-hero,.wedding-banner-wrap{height:auto!important;min-height:0!important}
+ .wedding-banner-image{width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center top!important}
+ .wedding-banner-wrap>.flower-sway-layer{height:100%!important;object-fit:fill!important}
+ .head{padding-inline:4px}
+ .head h2,.closing h2{font-size:clamp(29px,8vw,40px)!important;line-height:1.12!important}
+ .head p,.closing p{font-size:14px!important;line-height:1.7!important}
+ .festivities-list{grid-template-columns:minmax(0,1fr)!important;gap:14px!important}
+ .festivities-list .day-card,.festivities-list .featured-day{grid-column:auto!important;width:100%!important;height:auto!important;padding:18px!important}
+ .festivities-list .day-date{min-height:54px;gap:12px}
+ .festivities-list .day-date span{font-size:30px!important;line-height:1}
+ .festivities-list .day-date b{font-size:15px!important}
+ .festivities-list .day-date small{font-size:10px!important}
+ .festivities-list .function-row{gap:11px!important;padding:15px 0!important}
+ .festivities-list .function-icon{width:42px!important;height:42px!important;flex:0 0 42px!important;display:grid;place-items:center}
+ .festivities-list .function-info h3{font-size:21px!important;line-height:1.2!important}
+ .festivities-list .function-info p{font-size:13px!important;line-height:1.55!important}
+ .function-time{font-size:10px!important;letter-spacing:.16em!important}
+ .countdown-panel{padding:18px 14px!important}
+ .countdown-title{font-size:18px!important;line-height:1.3}
+ .countdown-panel .units{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:7px!important}
+ .countdown-panel .unit{padding:10px 4px!important;border-radius:9px}
+ .countdown-panel .unit b{font-size:clamp(20px,6vw,29px)!important}
+ .countdown-panel .unit small{font-size:8px!important;letter-spacing:.1em!important}
+ .venue-list{grid-template-columns:minmax(0,1fr)!important;gap:10px}
+ .venue-item{padding:13px!important;gap:10px}
+ .venue-item b{font-size:15px!important}
+ .venue-item small{font-size:12px!important;line-height:1.5!important}
+ .story,.closing{padding:22px 16px!important}
+ footer{padding:24px 14px!important;text-align:center}
+}
+
+/* Small phones */
+@media(max-width:380px){
+ .container{width:calc(100% - 22px)}
+ .lux-brand{font-size:9px!important;letter-spacing:.05em!important}
+ .lux-logo{width:34px!important;height:34px!important;flex-basis:34px}
+ .lux-hashtag{width:66px!important;flex-basis:66px!important}
+ .lux-hashtag img{width:65px!important}
+ .lux-nav .navin{width:calc(100% - 16px)!important}
+ .festivities-list .day-card{padding:14px!important}
+ .festivities-list .function-info h3{font-size:19px!important}
+ .countdown-panel .units{gap:5px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+
 </head><body>
 <nav class="lux-nav"><div class="container navin">
 <a class="lux-brand" href="#home" aria-label="Paras and Yukti home">
