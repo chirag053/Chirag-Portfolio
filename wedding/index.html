@@ -1092,6 +1092,28 @@ section[id],header[id]{scroll-margin-top:82px}
 }
 </style>
 
+
+<style id="wedding-background-music-style">
+.wedding-music-toggle{
+ position:absolute;z-index:20;right:clamp(14px,3vw,34px);bottom:clamp(14px,3vw,30px);
+ display:flex;align-items:center;gap:8px;min-height:42px;padding:0 14px;
+ border:1px solid rgba(244,211,151,.78);border-radius:999px;
+ background:rgba(37,9,20,.82);color:#f7dfb0;backdrop-filter:blur(8px);
+ box-shadow:0 5px 20px rgba(0,0,0,.24);font:700 11px "Manrope",sans-serif;
+ letter-spacing:.06em;cursor:pointer;transition:background .25s,transform .25s;
+}
+.wedding-music-toggle:hover{background:rgba(71,20,38,.94);transform:translateY(-1px)}
+.wedding-music-toggle .music-icon{font-size:19px;line-height:1}
+.wedding-music-toggle.is-playing .music-icon{animation:musicIconPulse 1.8s ease-in-out infinite}
+@keyframes musicIconPulse{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.16);opacity:1}}
+#wedding-background-music{display:none}
+@media(max-width:600px){
+ .wedding-music-toggle{right:12px;bottom:12px;min-height:38px;padding:0 12px;font-size:10px}
+ .wedding-music-toggle .music-icon{font-size:17px}
+}
+@media(prefers-reduced-motion:reduce){.wedding-music-toggle,.wedding-music-toggle .music-icon{animation:none!important;transition:none!important}}
+</style>
+
 </head><body>
 <nav class="lux-nav"><div class="container navin">
 <a class="lux-brand" href="#home" aria-label="Paras and Yukti home">
@@ -1112,6 +1134,11 @@ section[id],header[id]{scroll-margin-top:82px}
   <div class="wedding-banner-wrap">
     <img class="wedding-banner-image" src="./assets/wedding-image-3.webp" alt="Paras and Yukti beneath a golden wedding mandap with floral canopy" fetchpriority="high" decoding="async">
   </div>
+  <button class="wedding-music-toggle" type="button" aria-label="Play wedding music" aria-pressed="false" title="Play wedding music">
+    <span class="music-icon" aria-hidden="true">♫</span>
+    <span class="music-status">Music</span>
+  </button>
+  <audio id="wedding-background-music" src="./assets/wedding-music.mp3" preload="auto" loop autoplay playsinline></audio>
 </header>
 <section id="story"><div class="container reveal"><div class="head"><div class="kicker">A joyful beginning</div><h2>With love <span class="grad"> & blessings</span></h2><p>We would be honoured by your presence as our families come together to celebrate this beautiful occasion.</p></div><div class="story"><p class="blessing">With the blessings of Almighty and our beloved elders, we cordially invite you to grace the auspicious occasion of the wedding ceremony of their beloved grandson.</p><div class="family">Late Raj Kumari<br>&amp; Late Chandrabhan</div><div class="people"><div class="person"><div class="role">The Groom</div><div class="pname">Paras</div><div class="parents">Son of Mrs. Kiran Hasija<br>&amp; Mr. Deepak Hasija</div></div><div class="heart">✦</div><div class="person"><div class="role">The Bride</div><div class="pname">Yukti</div><div class="parents">Daughter of Mrs. Neelu Taneja<br>&amp; Mr. Pawan Tanaja</div></div></div></div></div></section>
 
@@ -1482,6 +1509,41 @@ document.addEventListener('DOMContentLoaded',function(){
  menu.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
  document.addEventListener('click',e=>{if(!menu.contains(e.target)&&!toggle.contains(e.target))closeMenu();});
+});
+</script>
+
+
+<script id="wedding-background-music-control">
+document.addEventListener('DOMContentLoaded',function(){
+ const audio=document.getElementById('wedding-background-music');
+ const button=document.querySelector('.wedding-music-toggle');
+ if(!audio||!button)return;
+ const icon=button.querySelector('.music-icon');
+ const label=button.querySelector('.music-status');
+ function paint(playing){
+  button.classList.toggle('is-playing',playing);
+  button.setAttribute('aria-pressed',String(playing));
+  button.setAttribute('aria-label',playing?'Turn wedding music off':'Play wedding music');
+  button.title=playing?'Turn wedding music off':'Play wedding music';
+  icon.textContent=playing?'♫':'♪';
+  label.textContent=playing?'Music On':'Music Off';
+ }
+ async function startMusic(){
+  try{await audio.play();paint(true);return true;}
+  catch(error){paint(false);return false;}
+ }
+ button.addEventListener('click',async function(){
+  if(audio.paused){await startMusic();}
+  else{audio.pause();paint(false);}
+ });
+ audio.addEventListener('play',()=>paint(true));
+ audio.addEventListener('pause',()=>paint(false));
+ // Browsers may block sound autoplay until the visitor interacts with the page.
+ startMusic();
+ document.addEventListener('pointerdown',function unlockOnce(){
+  if(audio.paused)startMusic();
+  if(!audio.paused)document.removeEventListener('pointerdown',unlockOnce);
+ },{passive:true});
 });
 </script>
 
