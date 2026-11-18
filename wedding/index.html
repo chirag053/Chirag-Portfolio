@@ -544,6 +544,192 @@ footer{font-family:var(--font-display)!important;letter-spacing:.08em!important}
 }
 </style>
 
+
+<style id="closing-section-warm-gold-fix">
+/* Remove leftover blue/purple portfolio accents from the closing invitation panel. */
+#closing, #closing .closing {
+  color: #f7e8c9 !important;
+  background: linear-gradient(145deg,#3b101f 0%,#290b17 55%,#1d0710 100%) !important;
+  border-color: rgba(221,181,112,.42) !important;
+}
+#closing .kicker {
+  color: #e6c47f !important;
+}
+#closing h2,
+#closing h2 span,
+#closing .grad {
+  color: #f2d69a !important;
+  background: none !important;
+  -webkit-text-fill-color: #f2d69a !important;
+  text-shadow: 0 3px 22px rgba(224,180,102,.18) !important;
+}
+#closing p {
+  color: #d8c4a8 !important;
+}
+#closing .signature {
+  color: #e8c477 !important;
+  background: linear-gradient(100deg,#fff0c7,#e5bd70,#b77a37) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+#closing .closing-date {
+  color: #e9d5ad !important;
+}
+#closing .btn,
+#closing a.btn,
+#closing .cta {
+  color: #2a0c17 !important;
+  background: linear-gradient(115deg,#f5dfaa 0%,#d7ad63 48%,#b77a37 100%) !important;
+  border: 1px solid rgba(255,231,174,.72) !important;
+  box-shadow: 0 10px 28px rgba(196,143,67,.22) !important;
+}
+#closing .btn:hover,
+#closing a.btn:hover {
+  background: linear-gradient(115deg,#fff0c7,#e8c477,#c58a43) !important;
+  box-shadow: 0 14px 34px rgba(196,143,67,.32) !important;
+}
+</style>
+
+
+<style id="full-banner-no-crop-fix">
+/* Preserve the complete Save-the-Date artwork on every screen size. */
+.hero.wedding-banner-hero,
+.wedding-banner-wrap {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+.wedding-banner-image {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: center top !important;
+}
+.wedding-banner-wrap > .flower-sway-layer {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: fill !important;
+  object-position: center top !important;
+}
+/* On phones, keep the full landscape artwork rather than forcing a portrait crop. */
+@media (max-width: 680px) {
+  .hero.wedding-banner-hero,
+  .wedding-banner-wrap {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .wedding-banner-image {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
+    object-position: center top !important;
+  }
+  .wedding-banner-wrap > .flower-sway-layer {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fill !important;
+  }
+}
+</style>
+
+
+<style id="all-festivities-layout">
+.festivities-list{display:grid;gap:22px}
+.festivities-list .day-card{padding:clamp(18px,3vw,30px)}
+.festivities-list .function-row{padding:18px 0}
+.festivities-list .function-row+.function-row{border-top:1px solid rgba(208,163,91,.35)}
+.festivities-list .function-info p{margin:7px 0 0}
+.festivities-list .function-info h3{margin:5px 0 8px}
+.festivities-list .day-date{margin-bottom:8px}
+@media(min-width:900px){
+ .festivities-list{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+ .festivities-list .featured-day{grid-column:span 2}
+}
+</style>
+
+
+<style id="clear-date-contrast-fix">
+/* Make event dates crisp champagne-gold, not muted or blurred. */
+.day-date, .day-date span, .day-date b, .day-date small,
+.day-date * {
+  opacity: 1 !important;
+  filter: none !important;
+  text-shadow: none !important;
+  -webkit-text-fill-color: initial;
+}
+.day-date span {
+  color: #ffe6a6 !important;
+  font-family: "Sora","Manrope",Arial,sans-serif !important;
+  font-weight: 800 !important;
+  text-shadow: 0 1px 0 rgba(0,0,0,.22) !important;
+}
+.day-date b {
+  color: #f6dfb1 !important;
+  font-weight: 800 !important;
+}
+.day-date small {
+  color: #d9bd87 !important;
+  font-weight: 700 !important;
+}
+.closing-date, .countdown-note {
+  color: #f0d69e !important;
+  opacity: 1 !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+.countdown-panel .unit b {
+  color: #ffe3a0 !important;
+  opacity: 1 !important;
+  filter: none !important;
+  text-shadow: 0 2px 14px rgba(226,181,99,.14) !important;
+}
+</style>
+
+
+<style id="event-cards-grid-alignment">
+/* Consistent two-column event grid: equal card widths and aligned edges. */
+.festivities-list{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  align-items:stretch !important;
+  gap:22px !important;
+}
+.festivities-list .day-card,
+.festivities-list .featured-day{
+  grid-column:auto !important;
+  width:100% !important;
+  min-width:0 !important;
+  height:100% !important;
+  box-sizing:border-box !important;
+  align-self:stretch !important;
+}
+.festivities-list .day-date{
+  display:flex !important;
+  align-items:center !important;
+  min-height:66px;
+}
+.festivities-list .function-row{
+  display:flex !important;
+  align-items:flex-start !important;
+  gap:14px !important;
+}
+.festivities-list .function-info{min-width:0;flex:1}
+@media(max-width:680px){
+ .festivities-list{grid-template-columns:minmax(0,1fr) !important;gap:16px !important}
+ .festivities-list .day-card,
+ .festivities-list .featured-day{height:auto !important}
+}
+</style>
+
 </head><body>
 <nav class="lux-nav"><div class="container navin">
 <a class="lux-brand" href="#home" aria-label="Paras and Yukti home">
@@ -567,7 +753,11 @@ footer{font-family:var(--font-display)!important;letter-spacing:.08em!important}
 <section id="story"><div class="container reveal"><div class="head"><div class="kicker">A joyful beginning</div><h2>With love <span class="grad"> & blessings</span></h2><p>We would be honoured by your presence as our families come together to celebrate this beautiful occasion.</p></div><div class="story"><p class="blessing">With the blessings of Almighty and our beloved elders, we cordially invite you to grace the auspicious occasion of the wedding ceremony of their beloved grandson.</p><div class="family">Late Raj Kumari<br>&amp; Late Chandrabhan</div><div class="people"><div class="person"><div class="role">The Groom</div><div class="pname">Paras</div><div class="parents">Son of Smt. Kiran Hasija<br>&amp; Mr. Deepak Hasija</div></div><div class="heart">✦</div><div class="person"><div class="role">The Bride</div><div class="pname">Yukti</div><div class="parents">Daughter of Mrs. Neelu Taneja<br>&amp; Mr. Pawan Tanaja</div></div></div></div></div></section>
 
 <section id="events"><div class="container reveal">
- <div class="head"><div class="kicker">12 December 2026 · Saturday</div><h2>Wedding <span class="grad">Day</span></h2><p>With the blessings of our families, join us as Paras &amp; Yukti begin their new journey together.</p></div>
+ <div class="head">
+  <div class="kicker">10–13 December 2026 · Wedding Celebrations</div>
+  <h2>Our Wedding <span class="grad">Festivities</span></h2>
+  <p>Four days of traditions, laughter and golden memories. We would love to celebrate every moment with you.</p>
+ </div>
  <div class="countdown-panel">
   <div class="kicker">The big day is coming</div>
   <div class="countdown-title">Countdown to Paras &amp; Yukti’s Wedding</div>
@@ -577,13 +767,69 @@ footer{font-family:var(--font-display)!important;letter-spacing:.08em!important}
    <div class="unit"><b id="minutes">--</b><small>Minutes</small></div>
    <div class="unit"><b id="seconds">--</b><small>Seconds</small></div>
   </div>
-  <div class="countdown-note">12 December 2026 · Saturday</div>
+  <div class="countdown-note">Wedding Ceremony · 12 December 2026 · Saturday</div>
  </div>
- <div class="day-list">
+ <div class="day-list festivities-list">
+  <article class="day-card">
+   <div class="day-date"><span>10</span><div><b>December 2026</b><small>Thursday</small></div></div>
+   <div class="function-row">
+    <div class="function-icon">🌿</div>
+    <div class="function-info">
+     <span class="function-time">Evening</span>
+     <h3>Mehndi / DJ</h3>
+     <p><b>Colour Theme:</b> Brown</p>
+     <p class="function-venue">📍 Aroma Palace, Link Road, Muzaffarnagar</p>
+    </div>
+   </div>
+  </article>
+  <article class="day-card">
+   <div class="day-date"><span>11</span><div><b>December 2026</b><small>Friday</small></div></div>
+   <div class="function-row">
+    <div class="function-icon">🥣</div>
+    <div class="function-info">
+     <span class="function-time">Morning</span>
+     <h3>Chung</h3>
+     <p class="function-venue">📍 At our residence</p>
+    </div>
+   </div>
+   <div class="function-row">
+    <div class="function-icon">💍</div>
+    <div class="function-info">
+     <span class="function-time">Evening</span>
+     <h3>Ring Ceremony</h3>
+     <p class="function-venue">📍 Hotel Swarn Inn, Muzaffarnagar</p>
+    </div>
+   </div>
+  </article>
   <article class="day-card featured-day">
    <div class="day-date"><span>12</span><div><b>December 2026</b><small>Saturday</small></div></div>
    <div class="function-row">
-    <div class="function-icon">💍</div><div class="function-info"><span class="function-time">Wedding Ceremony</span><h3>Marriage</h3><p class="function-venue">📍 The Platinum Resort, near Salasar Balaji Dham, Muzaffarnagar</p></div>
+    <div class="function-icon">🌼</div>
+    <div class="function-info">
+     <span class="function-time">Morning</span>
+     <h3>Gharoli + Haldi</h3>
+     <p><b>Colour Theme:</b> Hot Pink</p>
+     <p class="function-venue">📍 Hotel Swarn Inn, Muzaffarnagar</p>
+    </div>
+   </div>
+   <div class="function-row">
+    <div class="function-icon">👑</div>
+    <div class="function-info">
+     <span class="function-time">Evening · Wedding Ceremony</span>
+     <h3>Marriage</h3>
+     <p class="function-venue">📍 The Platinum Resort, near Salasar Balaji Dham, Muzaffarnagar</p>
+    </div>
+   </div>
+  </article>
+  <article class="day-card">
+   <div class="day-date"><span>13</span><div><b>December 2026</b><small>Sunday</small></div></div>
+   <div class="function-row">
+    <div class="function-icon">🪷</div>
+    <div class="function-info">
+     <span class="function-time">Evening · 6:00 PM to 8:00 PM</span>
+     <h3>Satsang</h3>
+     <p class="function-venue">📍 Anandpur Kutiya, Gandhi Colony</p>
+    </div>
    </div>
   </article>
  </div>
@@ -591,9 +837,12 @@ footer{font-family:var(--font-display)!important;letter-spacing:.08em!important}
 
 
 <section id="venue"><div class="container reveal">
- <div class="head"><div class="kicker">Wedding venue</div><h2>Celebrate <span class="grad">With Us</span></h2><p>We look forward to welcoming you on our special day.</p></div>
+ <div class="head"><div class="kicker">Celebration locations</div><h2>Where to <span class="grad">Join Us</span></h2><p>We look forward to welcoming you at each celebration.</p></div>
  <div class="venue-list">
-  <a class="venue-item" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=The+Platinum+Resort+near+Salasar+Balaji+Dham+Muzaffarnagar"><span class="venue-symbol">✿</span><span><b>The Platinum Resort</b><small>Near Salasar Balaji Dham, Muzaffarnagar · 12 December 2026</small></span><span class="venue-arrow">↗</span></a>
+  <a class="venue-item" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Aroma+Palace+Link+Road+Muzaffarnagar"><span class="venue-symbol">🌿</span><span><b>Aroma Palace</b><small>Mehndi / DJ · 10 December · Link Road, Muzaffarnagar</small></span><span class="venue-arrow">↗</span></a>
+  <a class="venue-item" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Swarn+Inn+Muzaffarnagar"><span class="venue-symbol">💍</span><span><b>Hotel Swarn Inn</b><small>Ring Ceremony · 11 December &amp; Gharoli + Haldi · 12 December · Muzaffarnagar</small></span><span class="venue-arrow">↗</span></a>
+  <a class="venue-item" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=The+Platinum+Resort+near+Salasar+Balaji+Dham+Muzaffarnagar"><span class="venue-symbol">👑</span><span><b>The Platinum Resort</b><small>Marriage · 12 December · Near Salasar Balaji Dham, Muzaffarnagar</small></span><span class="venue-arrow">↗</span></a>
+  <a class="venue-item" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Anandpur+Kutiya+Gandhi+Colony+Muzaffarnagar"><span class="venue-symbol">🪷</span><span><b>Anandpur Kutiya</b><small>Satsang · 13 December · Gandhi Colony</small></span><span class="venue-arrow">↗</span></a>
  </div>
 </div></section>
 
